@@ -1,0 +1,16 @@
+{
+  "fr": {
+    "title": "KOV+ - Suivi du Cycle",
+    "labelStart": "Date de début des règles :",
+    "labelCycle": "Durée du cycle (jours) :",
+    "labelAge": "Âge :",
+    "btnCalc": "Calculer"
+  },
+  "en": {
+    "title": "KOV+ - Cycle Tracker",
+    "labelStart": "Start date of menstruation:",
+    "labelCycle": "Cycle length (days):",
+    "labelAge": "Age:",
+    "btnCalc": "Calculate"
+  }
+}
