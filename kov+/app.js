@@ -58,6 +58,45 @@ function calculerCycle() {
   drawChart(jours, fertileStart, fertileEnd, ovulation);
 }
 
+function calculerCycl() {
+  const startDate = new Date(document.getElementById("startDate").value);
+  const cycleLength = parseInt(document.getElementById("cycleLength").value);
+  const calendar = document.getElementById("calendar");
+  calendar.innerHTML = "";
+
+  if (isNaN(startDate.getTime())) {
+    alert("Veuillez entrer une date valide.");
+    return;
+  }
+
+  const days = [];
+  for (let i = 0; i < cycleLength; i++) {
+    const day = new Date(startDate);
+    day.setDate(startDate.getDate() + i);
+    days.push(day);
+  }
+
+  days.forEach((day, i) => {
+    const div = document.createElement("div");
+    div.className = "calendar-day";
+
+    // Règles : jours 1 à 5
+    if (i < 5) div.classList.add("day-period");
+
+    // Ovulation : jour 14
+    if (i === 14) div.classList.add("day-ovulation");
+
+    // Fertilité : jours 12 à 16
+    if (i >= 12 && i <= 16) div.classList.add("day-fertile");
+
+    div.textContent = day.toLocaleDateString("fr-FR", { day: "numeric", month: "short" });
+    calendar.appendChild(div);
+  });
+
+  document.getElementById("result").innerHTML = `<p>Cycle calculé du ${days[0].toLocaleDateString()} au ${days[cycleLength - 1].toLocaleDateString()}</p>`;
+}
+
+
 function drawChart(jours, fertileStart, fertileEnd, ovulation) {
   const ctx = document.getElementById('cycleChart').getContext('2d');
   const labels = jours.map(j => formatDate(j));
@@ -107,4 +146,5 @@ function sendEmail() {
     alert("Erreur d'envoi : " + JSON.stringify(err));
   });
 }
+
 
