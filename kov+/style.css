@@ -9,6 +9,26 @@ body {
   padding: 20px;
 }
 
+#calendarContainer {
+  margin-top: 2rem;
+}
+#calendar {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 5px;
+  margin-top: 1rem;
+}
+.calendar-day {
+  padding: 10px;
+  text-align: center;
+  border-radius: 5px;
+  background-color: #eee;
+}
+.day-period { background-color: #e74c3c; color: white; }
+.day-ovulation { background-color: #f1c40f; color: black; }
+.day-fertile { background-color: #2ecc71; color: white; }
+
+
 .container {
   max-width: 500px;
   width: 100%;
@@ -66,3 +86,4 @@ button:hover {
   gap: 10px;
   margin-bottom: 10px;
 }
+
