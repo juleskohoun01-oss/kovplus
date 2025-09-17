@@ -21,7 +21,7 @@ function formatDate(date) {
   });
 }
 
-function calculerCycle() {
+function calculerCycl() {
   const startDate = new Date(document.getElementById("startDate").value);
   const cycleLength = parseInt(document.getElementById("cycleLength").value);
   const age = parseInt(document.getElementById("userAge").value);
@@ -58,7 +58,7 @@ function calculerCycle() {
   drawChart(jours, fertileStart, fertileEnd, ovulation);
 }
 
-function calculerCycl() {
+function calculerCycle() {
   const startDate = new Date(document.getElementById("startDate").value);
   const cycleLength = parseInt(document.getElementById("cycleLength").value);
   const calendar = document.getElementById("calendar");
@@ -146,5 +146,6 @@ function sendEmail() {
     alert("Erreur d'envoi : " + JSON.stringify(err));
   });
 }
+
 
 
