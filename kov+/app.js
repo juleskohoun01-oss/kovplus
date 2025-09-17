@@ -131,10 +131,13 @@ function drawChart(jours, fertileStart, fertileEnd, ovulation) {
 }
 
 function exportPDF() {
+  const { jsPDF } = window.jspdf;
   const doc = new jsPDF();
-  doc.text(document.getElementById("result").innerText, 10, 10);
-  doc.save("cycle_kovplus.pdf");
+  doc.text("KOV+ - Suivi du Cycle", 10, 10);
+  doc.text(document.getElementById("result").innerText, 10, 20);
+  doc.save("cycle.pdf");
 }
+
 
 function sendEmail() {
   emailjs.init("Et3ZSIseKRuttWEi-"); // Replace with your EmailJS user ID
@@ -146,6 +149,7 @@ function sendEmail() {
     alert("Erreur d'envoi : " + JSON.stringify(err));
   });
 }
+
 
 
 
