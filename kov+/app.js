@@ -98,8 +98,8 @@ function exportPDF() {
 }
 
 function sendEmail() {
-  emailjs.init("YOUR_EMAILJS_USER_ID"); // Replace with your EmailJS user ID
-  emailjs.send("YOUR_SERVICE_ID", "YOUR_TEMPLATE_ID", {
+  emailjs.init("Et3ZSIseKRuttWEi-"); // Replace with your EmailJS user ID
+  emailjs.send("service_q6row0w", "template_cj0scnf", {
     message: document.getElementById("result").innerText
   }).then(() => {
     alert("Email envoyé !");
@@ -107,3 +107,4 @@ function sendEmail() {
     alert("Erreur d'envoi : " + JSON.stringify(err));
   });
 }
+
