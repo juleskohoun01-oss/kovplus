@@ -94,6 +94,39 @@ function calculerCycle() {
   });
 
   document.getElementById("result").innerHTML = `<p>Cycle calculé du ${days[0].toLocaleDateString()} au ${days[cycleLength - 1].toLocaleDateString()}</p>`;
+  const age = parseInt(document.getElementById("userAge").value);
+  const resultDiv = document.getElementById("result");
+
+  if (!startDate || isNaN(cycleLength)) {
+    resultDiv.innerHTML = "<p>Veuillez entrer une date et une durée valide.</p>";
+    return;
+  }
+
+  const jours = [];
+  for (let i = 0; i < cycleLength; i++) {
+    const jour = new Date(startDate);
+    jour.setDate(jour.getDate() + i);
+    jours.push(jour);
+  }
+
+  const ovulation = jours[cycleLength - 14];
+  const fertileStart = jours[cycleLength - 16];
+  const fertileEnd = jours[cycleLength - 11];
+
+  let conseil = "";
+  if (age < 18) conseil = "Cycle souvent irrégulier à cet âge.";
+  else if (age > 45) conseil = "Cycle potentiellement irrégulier en pré-ménopause.";
+  else conseil = "Cycle régulier estimé.";
+
+  resultDiv.innerHTML = `
+    <p><strong>Cycle :</strong> du ${formatDate(jours[0])} au ${formatDate(jours[jours.length - 1])}</p>
+    <p><strong>Ovulation estimée :</strong> ${formatDate(ovulation)}</p>
+    <p><strong>Période fertile :</strong> du ${formatDate(fertileStart)} au ${formatDate(fertileEnd)}</p>
+    <p><strong>Conseil :</strong> ${conseil}</p>
+  `;
+
+  drawChart(jours, fertileStart, fertileEnd, ovulation);
+
 }
 
 
@@ -149,6 +182,7 @@ function sendEmail() {
     alert("Erreur d'envoi : " + JSON.stringify(err));
   });
 }
+
 
 
 
