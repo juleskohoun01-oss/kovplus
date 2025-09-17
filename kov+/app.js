@@ -64,11 +64,6 @@ function calculerCycle() {
   const calendar = document.getElementById("calendar");
   calendar.innerHTML = "";
 
-  if (isNaN(startDate.getTime())) {
-    alert("Veuillez entrer une date valide.");
-    return;
-  }
-
   const days = [];
   for (let i = 0; i < cycleLength; i++) {
     const day = new Date(startDate);
@@ -182,6 +177,7 @@ function sendEmail() {
     alert("Erreur d'envoi : " + JSON.stringify(err));
   });
 }
+
 
 
 
