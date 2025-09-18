@@ -142,10 +142,10 @@ function drawChart(jours, fertileStart, fertileEnd, ovulation) {
     datasets: [{
       label: 'Cycle menstruel',
       data: data,
-      borderColor: '#8e44ad',
-      backgroundColor: 'rgba(142, 68, 173, 0.2)',
+      borderColor: '#3498db', // Bleu doux pour la ligne
+      backgroundColor: 'rgba(52, 152, 219, 0.2)', // Bleu clair transparent
       pointBackgroundColor: data.map(v =>
-        v === 3 ? 'red' : v === 2 ? 'orange' : '#8e44ad'
+        v === 3 ? '#e74c3c' : v === 2 ? '#f39c12' : '#3498db'
       ),
       pointRadius: 5,
       fill: true,
@@ -162,24 +162,24 @@ function drawChart(jours, fertileStart, fertileEnd, ovulation) {
             const value = context.raw;
             if (value === 3) return 'Ovulation';
             if (value === 2) return 'Période fertile';
-            return 'Jour normal';
+            return 'Jour du cycle';
           }
         }
       }
     },
     scales: {
-      y: {
-        display: false
-      },
+      y: { display: false },
       x: {
         ticks: {
           maxRotation: 90,
-          minRotation: 45
+          minRotation: 45,
+          color: '#2c3e50' // Couleur foncée pour les dates
         }
       }
     }
   }
 });
+
 }
 
 function exportPDF() {
@@ -235,6 +235,7 @@ function sendEmail() {
 function closeModal() {
   document.getElementById("emailSuccessModal").style.display = "none";
 }
+
 
 
 
