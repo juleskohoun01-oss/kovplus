@@ -193,7 +193,7 @@ function sendEmail() {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ email: userEmail, message: message })
-    });
+    })
       .then(res => {
         if (res.ok) {
           alert("✅ Email enregistré dans Google Sheets");
@@ -210,6 +210,7 @@ function sendEmail() {
 function closeModal() {
   document.getElementById("emailSuccessModal").style.display = "none";
 }
+
 
 
 
