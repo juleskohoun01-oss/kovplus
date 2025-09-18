@@ -166,17 +166,25 @@ function exportPDF() {
   doc.save("cycle.pdf");
 }
 
-
+emailjs.init("Et3ZSIseKRuttWEi-"); // Replace with your EmailJS user ID
+  
 function sendEmail() {
-  emailjs.init("Et3ZSIseKRuttWEi-"); // Replace with your EmailJS user ID
-  emailjs.send("service_q6row0w", "template_cj0scnf", {
-    message: document.getElementById("result").innerText
-  }).then(() => {
-    alert("Email envoyé !");
-  }, (err) => {
-    alert("Erreur d'envoi : " + JSON.stringify(err));
-  });
+  const params = {
+    to_name: "Utilisateur",
+    from_name: "KOV+",
+    message: document.getElementById("result").innerText,
+    reply_to: "juleskohoun01@gmail.com" // ou une adresse dynamique
+  };
+
+  emailjs.send("service_q6row0w", "template_cj0scnf", params)
+    .then(() => {
+      alert("✅ Email envoyé avec succès !");
+    }, (err) => {
+      console.error("Erreur EmailJS :", err);
+      alert("❌ Échec de l'envoi : " + err.text);
+    });
 }
+
 
 
 
