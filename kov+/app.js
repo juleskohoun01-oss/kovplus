@@ -182,34 +182,42 @@ function sendEmail() {
     to_name: "Utilisatrice de KOV+",
     from_name: "KOVplus Entreprise",
     message: message,
-    user_email: userEmail // ← ce champ doit exister dans ton template EmailJS
+    user_email: userEmail
   };
 
   emailjs.send("service_q6row0w", "template_u1ixycb", params)
     .then(() => {
       document.getElementById("emailSuccessModal").style.display = "flex";
-      // 📤 Enregistrement dans Google Sheets via Apps Script
+
+      // ✅ Enregistrement dans Google Sheets via Apps Script
       fetch("https://script.google.com/macros/s/AKfycbyrjskhv0LcDg7nfRjjYxL__PB3kLSASGAyrwFnT-uwcOsfcea0LLCCzUWGq4ev0mzftA/exec", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ email: userEmail, message: message })
-    })
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email: userEmail, message: message })
+      })
       .then(res => {
         if (res.ok) {
           alert("✅ Email enregistré dans Google Sheets");
         } else {
           console.warn("⚠️ Échec d'enregistrement dans Sheets");
         }
+      })
+      .catch(err => {
+        console.error("❌ Erreur lors de l'enregistrement :", err);
       });
-    }, (err) => {
+
+    })
+    .catch(err => {
       console.error("Erreur EmailJS :", err);
       alert("❌ Échec de l'envoi : " + err.text);
     });
 }
 
+
 function closeModal() {
   document.getElementById("emailSuccessModal").style.display = "none";
 }
+
 
 
 
