@@ -179,19 +179,28 @@ function sendEmail() {
   }
 
   const params = {
-    to_name: "Utilisateur",
-    from_name: "KOV+",
+    to_name: "Utilisatrice de KOV+",
+    from_name: "KOVplus Entreprise",
     message: message,
     user_email: userEmail // ← ce champ doit exister dans ton template EmailJS
   };
 
   emailjs.send("service_q6row0w", "template_u1ixycb", params)
     .then(() => {
-      alert("✅ Email envoyé à " + userEmail);
+      document.getElementById("emailSuccessModal").style.display = "flex";
     }, (err) => {
       console.error("Erreur EmailJS :", err);
       alert("❌ Échec de l'envoi : " + err.text);
     });
+}
+fetch("save_email.php", {
+  method: "POST",
+  headers: { "Content-Type": "application/x-www-form-urlencoded" },
+  body: `email=${encodeURIComponent(userEmail)}&message=${encodeURIComponent(message)}`
+});
+
+function closeModal() {
+  document.getElementById("emailSuccessModal").style.display = "none";
 }
 
 
