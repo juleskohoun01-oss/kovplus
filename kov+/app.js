@@ -136,27 +136,50 @@ function drawChart(jours, fertileStart, fertileEnd, ovulation) {
   });
 
   new Chart(ctx, {
-    type: 'bar',
-    data: {
-      labels: labels,
-      datasets: [{
-        label: 'Cycle',
-        data: data,
-        backgroundColor: data.map(v =>
-          v === 3 ? 'red' : v === 2 ? 'orange' : '#8e44ad'
-        )
-      }]
+  type: 'line',
+  data: {
+    labels: labels,
+    datasets: [{
+      label: 'Cycle menstruel',
+      data: data,
+      borderColor: '#8e44ad',
+      backgroundColor: 'rgba(142, 68, 173, 0.2)',
+      pointBackgroundColor: data.map(v =>
+        v === 3 ? 'red' : v === 2 ? 'orange' : '#8e44ad'
+      ),
+      pointRadius: 5,
+      fill: true,
+      tension: 0.3
+    }]
+  },
+  options: {
+    responsive: true,
+    plugins: {
+      legend: { display: true },
+      tooltip: {
+        callbacks: {
+          label: function(context) {
+            const value = context.raw;
+            if (value === 3) return 'Ovulation';
+            if (value === 2) return 'Période fertile';
+            return 'Jour normal';
+          }
+        }
+      }
     },
-    options: {
-      responsive: true,
-      plugins: {
-        legend: { display: false }
+    scales: {
+      y: {
+        display: false
       },
-      scales: {
-        y: { display: false }
+      x: {
+        ticks: {
+          maxRotation: 90,
+          minRotation: 45
+        }
       }
     }
-  });
+  }
+});
 }
 
 function exportPDF() {
@@ -212,6 +235,7 @@ function sendEmail() {
 function closeModal() {
   document.getElementById("emailSuccessModal").style.display = "none";
 }
+
 
 
 
