@@ -176,14 +176,14 @@ function sendEmail() {
     reply_to: "juleskohoun01@gmail.com" // ou une adresse dynamique
   };
 
-  emailjs.send("service_q6row0w", "template_cj0scnf", params)
-    .then(() => {
+  emailjs.send("service_q6row0w", "template_p9gg4jw", params).then(() => {
       alert("✅ Email envoyé avec succès !");
     }, (err) => {
       console.error("Erreur EmailJS :", err);
       alert("❌ Échec de l'envoi : " + err.text);
     });
 }
+
 
 
 
