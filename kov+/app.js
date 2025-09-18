@@ -1,4 +1,5 @@
 let currentLang = 'fr';
+emailjs.init("Et3ZSIseKRuttWEi-"); // Replace with your EmailJS user ID
 
 function setLang(lang) {
   currentLang = lang;
@@ -166,7 +167,7 @@ function exportPDF() {
   doc.save("cycle.pdf");
 }
 
-emailjs.init("Et3ZSIseKRuttWEi-"); // Replace with your EmailJS user ID
+
   
 function sendEmail() {
   const userEmail = document.getElementById("userEmail").value;
@@ -192,6 +193,7 @@ function sendEmail() {
       alert("❌ Échec de l'envoi : " + err.text);
     });
 }
+
 
 
 
