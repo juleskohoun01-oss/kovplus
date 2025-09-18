@@ -189,7 +189,7 @@ function sendEmail() {
     .then(() => {
       document.getElementById("emailSuccessModal").style.display = "flex";
       // 📤 Enregistrement dans Google Sheets via Apps Script
-      fetch("https://script.google.com/macros/s/AKfycbxd13mLIvtbenBqJ_dnJjegOm78XaVJEks114aID1UPC08LyoLIXUwaoaGvbwn_B_Cpfw/exec", {
+      fetch("https://script.google.com/macros/s/AKfycbyrjskhv0LcDg7nfRjjYxL__PB3kLSASGAyrwFnT-uwcOsfcea0LLCCzUWGq4ev0mzftA/exec", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ email: userEmail, message: message })
@@ -210,6 +210,7 @@ function sendEmail() {
 function closeModal() {
   document.getElementById("emailSuccessModal").style.display = "none";
 }
+
 
 
 
