@@ -188,15 +188,23 @@ function sendEmail() {
   emailjs.send("service_q6row0w", "template_u1ixycb", params)
     .then(() => {
       document.getElementById("emailSuccessModal").style.display = "flex";
+      // 📤 Enregistrement dans Google Sheets via Apps Script
+      fetch("TON_URL_APPS_SCRIPT", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email: userEmail, message: message })
+      })
+      .then(res => {
+        if (res.ok) {
+          console.log("✅ Email enregistré dans Google Sheets");
+        } else {
+          console.warn("⚠️ Échec d'enregistrement dans Sheets");
+        }
+      });
     }, (err) => {
       console.error("Erreur EmailJS :", err);
       alert("❌ Échec de l'envoi : " + err.text);
     });
-  fetch("https://script.google.com/macros/s/AKfycbxd13mLIvtbenBqJ_dnJjegOm78XaVJEks114aID1UPC08LyoLIXUwaoaGvbwn_B_Cpfw/exec", {
-  method: "POST",
-  headers: { "Content-Type": "application/json" },
-  body: JSON.stringify({ email: userEmail, message: message })
-});alert("❌ SAVE : SHEET");
 }
 fetch("save_email.php", {
   method: "POST",
@@ -207,6 +215,7 @@ fetch("save_email.php", {
 function closeModal() {
   document.getElementById("emailSuccessModal").style.display = "none";
 }
+
 
 
 
