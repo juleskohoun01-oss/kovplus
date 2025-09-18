@@ -206,15 +206,11 @@ function sendEmail() {
       alert("❌ Échec de l'envoi : " + err.text);
     });
 }
-fetch("save_email.php", {
-  method: "POST",
-  headers: { "Content-Type": "application/x-www-form-urlencoded" },
-  body: `email=${encodeURIComponent(user_email)}&message=${encodeURIComponent(message)}`
-});
 
 function closeModal() {
   document.getElementById("emailSuccessModal").style.display = "none";
 }
+
 
 
 
