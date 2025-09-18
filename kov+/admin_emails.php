@@ -1,4 +1,17 @@
 <?php
+session_start();
+$pass = "kovadmin"; // Mot de passe à personnaliser
+
+if (!isset($_POST['access']) || $_POST['access'] !== $pass) {
+  echo '<form method="POST">
+          <input type="password" name="access" placeholder="Mot de passe admin" />
+          <button type="submit">Accéder</button>
+        </form>';
+  exit;
+}
+?>
+
+<?php
 $host = "localhost";
 $db = "kovplus";
 $user = "root";
