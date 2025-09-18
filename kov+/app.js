@@ -196,7 +196,7 @@ function sendEmail() {
     });
       .then(res => {
         if (res.ok) {
-          console.log("✅ Email enregistré dans Google Sheets");
+          alert("✅ Email enregistré dans Google Sheets");
         } else {
           console.warn("⚠️ Échec d'enregistrement dans Sheets");
         }
@@ -215,6 +215,7 @@ fetch("save_email.php", {
 function closeModal() {
   document.getElementById("emailSuccessModal").style.display = "none";
 }
+
 
 
 
