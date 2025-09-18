@@ -182,7 +182,7 @@ function sendEmail() {
     to_name: "Utilisateur",
     from_name: "KOV+",
     message: message,
-    reply_to: userEmail
+    user_email: userEmail // ← ce champ doit exister dans ton template EmailJS
   };
 
   emailjs.send("service_q6row0w", "template_u1ixycb", params)
@@ -193,6 +193,7 @@ function sendEmail() {
       alert("❌ Échec de l'envoi : " + err.text);
     });
 }
+
 
 
 
