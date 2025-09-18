@@ -11,22 +11,50 @@ body {
 
 #calendarContainer {
   margin-top: 2rem;
+  overflow-x: auto; /* Permet de scroller si débordement */
+  max-width: 100%;
 }
+
 #calendar {
   display: grid;
-  grid-template-columns: repeat(7, 1fr);
+  grid-template-columns: repeat(7, minmax(40px, 1fr)); /* largeur minimale */
   gap: 5px;
   margin-top: 1rem;
+  width: 100%;
+  box-sizing: border-box;
 }
+
 .calendar-day {
   padding: 10px;
   text-align: center;
   border-radius: 5px;
   background-color: #eee;
+  word-wrap: break-word;
+  font-size: 0.9rem;
 }
-.day-period { background-color: #e74c3c; color: white; }
-.day-ovulation { background-color: #f1c40f; color: black; }
-.day-fertile { background-color: #2ecc71; color: white; }
+
+.day-period {
+  background-color: #e74c3c;
+  color: white;
+}
+
+.day-ovulation {
+  background-color: #f1c40f;
+  color: black;
+}
+
+.day-fertile {
+  background-color: #2ecc71;
+  color: white;
+}
+
+/* Responsive: réduire la taille du texte sur petits écrans */
+@media screen and (max-width: 600px) {
+  .calendar-day {
+    padding: 8px;
+    font-size: 0.75rem;
+  }
+}
 
 
 .container {
@@ -86,4 +114,5 @@ button:hover {
   gap: 10px;
   margin-bottom: 10px;
 }
+
 
