@@ -190,27 +190,23 @@ function sendEmail() {
       document.getElementById("emailSuccessModal").style.display = "flex";
 
       // ✅ Enregistrement dans Google Sheets via Apps Script
-      fetch("https://script.google.com/macros/s/AKfycby-hJtEegC8OFUJTvLAzv0XGv-ewQkHC0coO6Di_x5ZDpkRRFjJWRurxXPqcN3yKCOd2Q/exec", {
-  method: "POST",
-  headers: {
-    "Content-Type": "application/json"
-  },
-  body: JSON.stringify({
-    email: userEmail,
-    message: message
-  })
-})
-.then(res => res.json())
-.then(data => {
-  if (data.result === "success") {
-    console.log("✅ Email enregistré dans Google Sheets");
-  } else {
-    console.warn("⚠️ Réponse inattendue :", data);
-  }
-})
-.catch(err => {
-  console.error("❌ Erreur lors de l'enregistrement :", err);
-});
+    fetch("https://script.google.com/macros/s/AKfycbyvBoWSvo4eNFkouPWm7W0nKOwm7KsI6UzSybtjejATJ2Oyfgal1UwtwpMrYl0na86_VA/exec", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        email: userEmail,
+        message: message
+      })
+    })
+    .then(res => res.text())
+    .then(data => {
+      console.log("✅ Réponse du script :", data);
+    })
+    .catch(err => {
+      console.error("❌ Erreur CORS ou réseau :", err);
+    });
 
 }
 
@@ -218,6 +214,7 @@ function sendEmail() {
 function closeModal() {
   document.getElementById("emailSuccessModal").style.display = "none";
 }
+
 
 
 
