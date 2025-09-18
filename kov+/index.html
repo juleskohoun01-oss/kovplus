@@ -7,7 +7,12 @@
   <link rel="stylesheet" href="style.css" />
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/jspdf"></script>
-  <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+  <script type="module">
+  import emailjs from 'https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js';
+  emailjs.init("Et3ZSIseKRuttWEi-"); // Ton public key
+  window.emailjs = emailjs; // Pour rendre accessible dans le reste du script
+  </script>
+
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 </head>
 <body>
@@ -56,6 +61,7 @@
 		<h4>Situation geographique: Burkina Faso, Ouagadougou</h4>
 </footer>
 </html>
+
 
 
 
