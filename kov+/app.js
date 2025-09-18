@@ -166,7 +166,7 @@ function exportPDF() {
   doc.save("cycle.pdf");
 }
 
-emailjs.init("Et3ZSIseKRuttWEi-"); // Replace with your EmailJS user ID
+//emailjs.init("Et3ZSIseKRuttWEi-"); // Replace with your EmailJS user ID
   
 function sendEmail() {
   const userEmail = document.getElementById("userEmail").value;
@@ -184,7 +184,7 @@ function sendEmail() {
     reply_to: userEmail
   };
 
-  emailjs.send("service_q6row0w", "template_cj0scnf", params)
+  emailjs.send("service_q6row0w", "template_p9gg4jw", params)
     .then(() => {
       alert("✅ Email envoyé à " + userEmail);
     }, (err) => {
@@ -192,6 +192,7 @@ function sendEmail() {
       alert("❌ Échec de l'envoi : " + err.text);
     });
 }
+
 
 
 
