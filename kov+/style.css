@@ -69,7 +69,7 @@ body {
 }
 
 .modal-content {
-  background-color: #fff;
+  background-color: black;
   padding: 2rem;
   border-radius: 10px;
   text-align: center;
@@ -146,6 +146,7 @@ button:hover {
   gap: 10px;
   margin-bottom: 10px;
 }
+
 
 
 
