@@ -169,20 +169,31 @@ function exportPDF() {
 emailjs.init("Et3ZSIseKRuttWEi-"); // Replace with your EmailJS user ID
   
 function sendEmail() {
+  const userEmail = document.getElementById("userEmail").value;
+  const message = document.getElementById("result").innerText;
+
+  if (!userEmail) {
+    alert("Veuillez entrer une adresse email valide.");
+    return;
+  }
+
   const params = {
     to_name: "Utilisateur",
     from_name: "KOV+",
-    message: document.getElementById("result").innerText,
-    reply_to: "juleskohoun01@gmail.com" // ou une adresse dynamique
+    message: message,
+    reply_to: userEmail
   };
 
-  emailjs.send("service_q6row0w", "template_p9gg4jw", params).then(() => {
-      alert("✅ Email envoyé avec succès !");
+  emailjs.send("service_q6row0w", "template_cj0scnf", params)
+    .then(() => {
+      alert("✅ Email envoyé à " + userEmail);
     }, (err) => {
       console.error("Erreur EmailJS :", err);
       alert("❌ Échec de l'envoi : " + err.text);
     });
 }
+
+
 
 
 
