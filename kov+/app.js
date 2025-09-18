@@ -190,30 +190,24 @@ function sendEmail() {
       document.getElementById("emailSuccessModal").style.display = "flex";
 
       // ✅ Enregistrement dans Google Sheets via Apps Script
+    const formData = new URLSearchParams();
+    formData.append("email", userEmail);
+    formData.append("message", message);
+    
     fetch("https://script.google.com/macros/s/AKfycbyvBoWSvo4eNFkouPWm7W0nKOwm7KsI6UzSybtjejATJ2Oyfgal1UwtwpMrYl0na86_VA/exec", {
       method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({
-        email: userEmail,
-        message: message
-      })
+      body: formData
     })
     .then(res => res.text())
-    .then(data => {
-      console.log("✅ Réponse du script :", data);
-    })
-    .catch(err => {
-      console.error("❌ Erreur CORS ou réseau :", err);
-    });
-
+    .then(data => console.log("✅ Réponse du script :", data))
+    .catch(err => console.error("❌ Erreur :", err));
 }
 
 
 function closeModal() {
   document.getElementById("emailSuccessModal").style.display = "none";
 }
+
 
 
 
