@@ -202,11 +202,12 @@ function sendEmail() {
     .then(data => console.log("✅ Réponse du script :", data))
     .catch(err => console.error("❌ Erreur :", err));
 }
-
+}
 
 function closeModal() {
   document.getElementById("emailSuccessModal").style.display = "none";
 }
+
 
 
 
