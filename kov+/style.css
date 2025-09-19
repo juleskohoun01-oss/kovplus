@@ -212,15 +212,20 @@ footer {
   justify-content: center;
   gap: 20px;
   margin-top: 30px;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .images img {
-  max-width: 50%;
+  max-width: 100%;
   height: auto;
+  width: 300px; /* largeur fixe mais flexible */
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0,0,0,0.3);
-  flex: 1 1 250px;
+  object-fit: cover;
 }
+
+
 
 
 
