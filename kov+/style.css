@@ -9,6 +9,13 @@ body {
   padding: 20px;
 }
 
+.carousel-caption {
+  text-align: center;
+  font-size: 14px;
+  color: white;
+  margin-top: 5px;
+}
+
 .carousel {
   position: relative;
   width: 100%;
@@ -298,6 +305,7 @@ footer {
   box-shadow: 0 0 10px rgba(0,0,0,0.3);
   object-fit: cover;
 }
+
 
 
 
