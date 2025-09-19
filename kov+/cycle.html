@@ -37,12 +37,86 @@
 
     <button onclick="calculerCycle()" id="btnCalc">Calculer</button>
 	<div id="calendarContainer">
-  <h2>📅 Calendrier du cycle</h2>
-  <div id="calendar"></div>
+	  <h2>📅 Calendrier du cycle</h2>
+	  <div id="calendar"></div>
 	</div>
 
     <div id="result"></div>
     <canvas id="cycleChart" width="400" height="200"></canvas>
+	<!-- Bouton pour ouvrir la modale -->
+	<button onclick="openCarouselModal()">Voir le cycle en images</button>
+
+<!-- Modale contenant le carrousel -->
+	<div class="modal" id="carouselModal">
+	  <div class="modal-content">
+	    <span class="close-btn" onclick="closeCarouselModal()">×</span>
+	
+	    <div class="carousel">
+	      <div class="carousel-track" id="carouselTrack">
+	        <!-- Images liées aux phases du cycle -->
+	        <img src="day1.jpg" alt="Jour 1 - Règles">
+	        <img src="day14.jpg" alt="Jour 14 - Ovulation">
+	        <img src="day16.jpg" alt="Jour 16 - Fertilité">
+	      </div>
+	
+	      <!-- Pagination -->
+	      <div class="carousel-pagination" id="carouselPagination">
+			  <script>
+				  let currentIndex = 0;
+				  const track = document.getElementById('carouselTrack');
+				  const images = track.querySelectorAll('img');
+				  const pagination = document.getElementById('carouselPagination');
+				
+				  function updateCarousel() {
+				    const width = images[0].clientWidth;
+				    track.style.transform = `translateX(-${currentIndex * width}px)`;
+				    updatePagination();
+				  }
+				
+				  function updatePagination() {
+				    pagination.innerHTML = '';
+				    images.forEach((_, i) => {
+				      const dot = document.createElement('span');
+				      if (i === currentIndex) dot.classList.add('active');
+				      dot.onclick = () => {
+				        currentIndex = i;
+				        updateCarousel();
+				      };
+				      pagination.appendChild(dot);
+				    });
+				  }
+				
+				  function nextSlide() {
+				    currentIndex = (currentIndex + 1) % images.length;
+				    updateCarousel();
+				  }
+				
+				  function prevSlide() {
+				    currentIndex = (currentIndex - 1 + images.length) % images.length;
+				    updateCarousel();
+				  }
+				
+				  function openCarouselModal() {
+				    document.getElementById("carouselModal").style.display = "flex";
+				    updateCarousel();
+				  }
+				
+				  function closeCarouselModal() {
+				    document.getElementById("carouselModal").style.display = "none";
+				  }
+				
+				  window.addEventListener('resize', updateCarousel);
+			 </script>
+
+		  </div>
+	
+	      <!-- Boutons de navigation -->
+	      <button class="carousel-btn prev" onclick="prevSlide()">❮</button>
+	      <button class="carousel-btn next" onclick="nextSlide()">❯</button>
+	    </div>
+	  </div>
+	</div>
+
 
     <div class="actions">
 	<label for="userEmail">Adresse email du destinataire :</label>
@@ -75,6 +149,7 @@
 </body>
 
 </html>
+
 
 
 
