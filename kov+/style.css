@@ -21,6 +21,17 @@ body {
   padding: 15px 0;
   z-index: 1000;
   box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+  button {
+  margin-top: 20px;
+  width: 50%;
+  padding: 10px;
+  background-color: #ff4081;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+}
 }
 
 .navbar a {
@@ -224,6 +235,7 @@ footer {
   box-shadow: 0 0 10px rgba(0,0,0,0.3);
   object-fit: cover;
 }
+
 
 
 
