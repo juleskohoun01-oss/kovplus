@@ -148,6 +148,10 @@ function updateCycleImages(jours, ovulation, fertileStart, fertileEnd) {
     }
 
     track.appendChild(img);
+    const caption = document.createElement('p');
+    caption.textContent = img.alt;
+    caption.className = "carousel-caption"; // pour le styliser
+    track.appendChild(caption);
   });
 
   currentIndex = 0;
@@ -264,6 +268,7 @@ function sendEmail() {
 function closeModal() {
   document.getElementById("emailSuccessModal").style.display = "none";
 }
+
 
 
 
