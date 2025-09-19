@@ -33,6 +33,7 @@ body {
 
 .carousel-track img {
   width: 90%;
+  height: 250px;
   flex-shrink: 0;
   object-fit: cover;
   border-radius: 10px;
@@ -40,7 +41,7 @@ body {
 
 .carousel-btn {
   position: absolute;
-  top: 20%;
+  top: 50%;
   transform: translateY(-50%);
   background-color: rgba(90, 42, 130, 0.8);
   border: none;
@@ -50,10 +51,21 @@ body {
   cursor: pointer;
   z-index: 10;
   border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.prev { left: 10px; }
-.next { right: 10px; }
+.prev {
+  left: 10px;
+}
+
+.next {
+  right: 10px;
+}
+
 
 .carousel-pagination {
   display: flex;
@@ -309,6 +321,7 @@ footer {
   box-shadow: 0 0 10px rgba(0,0,0,0.3);
   object-fit: cover;
 }
+
 
 
 
