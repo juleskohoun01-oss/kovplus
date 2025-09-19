@@ -19,8 +19,8 @@ body {
 
 .carousel {
   position: relative;
-  width: 100%;
-  max-width: 500px;
+  width: 80%;
+  max-width: 300px;
   margin: auto;
   overflow: hidden;
   border-radius: 10px;
@@ -32,7 +32,7 @@ body {
 }
 
 .carousel-track img {
-  width: 100%;
+  width: 80%;
   flex-shrink: 0;
   object-fit: cover;
   border-radius: 10px;
@@ -40,7 +40,7 @@ body {
 
 .carousel-btn {
   position: absolute;
-  top: 50%;
+  top: 30%;
   transform: translateY(-50%);
   background-color: rgba(90, 42, 130, 0.8);
   border: none;
@@ -309,6 +309,7 @@ footer {
   box-shadow: 0 0 10px rgba(0,0,0,0.3);
   object-fit: cover;
 }
+
 
 
 
