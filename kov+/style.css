@@ -9,6 +9,37 @@ body {
   padding: 20px;
 }
 
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: rgba(90, 42, 130, 0.95); /* même violet que ton fond */
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  padding: 15px 0;
+  z-index: 1000;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+.navbar a {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 16px;
+  transition: color 0.3s ease;
+}
+
+.navbar a:hover {
+  color: #f1c40f; /* jaune doux au survol */
+}
+
+body {
+  padding-top: 70px; /* pour ne pas que le contenu soit caché sous la navbar */
+}
+
+
 #calendarContainer {
   margin-top: 2rem;
   overflow-x: auto; /* Permet de scroller si débordement */
@@ -174,6 +205,7 @@ footer {
       color: #ddd;
       text-align: center;
     }
+
 
 
 
