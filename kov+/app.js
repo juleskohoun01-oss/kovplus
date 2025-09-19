@@ -122,7 +122,36 @@ function calculerCycle() {
   `;
 
   drawChart(jours, fertileStart, fertileEnd, ovulation);
+  openCarouselModal(); // à la fin de calculerCycle()
+  updateCycleImages(jours, ovulation, fertileStart, fertileEnd)
 
+}
+
+
+function updateCycleImages(jours, ovulation, fertileStart, fertileEnd) {
+  const track = document.getElementById('carouselTrack');
+  track.innerHTML = '';
+
+  jours.forEach((jour, i) => {
+    const img = document.createElement('img');
+    img.alt = `Jour ${i + 1}`;
+
+    if (jour.toDateString() === ovulation.toDateString()) {
+      img.src = "ovulation.jpg";
+      img.alt += " - Ovulation";
+    } else if (jour >= fertileStart && jour <= fertileEnd) {
+      img.src = "fertile.jpg";
+      img.alt += " - Fertilité";
+    } else {
+      img.src = "normal.jpg";
+      img.alt += " - Jour normal";
+    }
+
+    track.appendChild(img);
+  });
+
+  currentIndex = 0;
+  updateCarousel();
 }
 
 
@@ -235,6 +264,7 @@ function sendEmail() {
 function closeModal() {
   document.getElementById("emailSuccessModal").style.display = "none";
 }
+
 
 
 
