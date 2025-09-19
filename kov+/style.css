@@ -9,6 +9,10 @@ body {
   padding: 20px;
 }
 
+.carousel-pagination {
+  margin: 15px 0;
+}
+
 .navbar {
   position: fixed;
   top: 0;
@@ -235,6 +239,7 @@ footer {
   box-shadow: 0 0 10px rgba(0,0,0,0.3);
   object-fit: cover;
 }
+
 
 
 
