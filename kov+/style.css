@@ -32,7 +32,7 @@ body {
 }
 
 .carousel-track img {
-  width: 80%;
+  width: 90%;
   flex-shrink: 0;
   object-fit: cover;
   border-radius: 10px;
@@ -40,7 +40,7 @@ body {
 
 .carousel-btn {
   position: absolute;
-  top: 70%;
+  top: 20%;
   transform: translateY(-50%);
   background-color: rgba(90, 42, 130, 0.8);
   border: none;
@@ -94,7 +94,7 @@ body {
   box-shadow: 0 2px 5px rgba(0,0,0,0.2);
   button {
   margin-top: 10px;
-  width: 10%;
+  width: 20%;
   padding: 2px;
   background-color: #ff4081;
   border: none;
@@ -309,6 +309,7 @@ footer {
   box-shadow: 0 0 10px rgba(0,0,0,0.3);
   object-fit: cover;
 }
+
 
 
 
