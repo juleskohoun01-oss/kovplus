@@ -16,6 +16,7 @@ body {
   margin-top: 5px;
 }
 
+
 .carousel {
   position: relative;
   width: 100%;
@@ -93,7 +94,7 @@ body {
   box-shadow: 0 2px 5px rgba(0,0,0,0.2);
   button {
   margin-top: 10px;
-  width: 30%;
+  width: 10%;
   padding: 2px;
   background-color: #ff4081;
   border: none;
@@ -308,6 +309,7 @@ footer {
   box-shadow: 0 0 10px rgba(0,0,0,0.3);
   object-fit: cover;
 }
+
 
 
 
