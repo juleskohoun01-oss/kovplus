@@ -124,6 +124,8 @@ function calculerCycle() {
   drawChart(jours, fertileStart, fertileEnd, ovulation);
   openCarouselModal(); // à la fin de calculerCycle()
   updateCycleImages(jours, ovulation, fertileStart, fertileEnd)
+    // ✅ Export automatique du fichier XML
+  exporterCycleXML();
 
 }
 
@@ -264,10 +266,80 @@ function sendEmail() {
     });
 }
 
+window.onload = function () {
+  const now = new Date().toUTCString();
+  document.cookie = "lastVisit=" + now + "; path=/";
+};
+
+function getCookie(name) {
+  const value = "; " + document.cookie;
+  const parts = value.split("; " + name + "=");
+  if (parts.length === 2) return parts.pop().split(";").shift();
+}
+
+const lastVisit = getCookie("lastVisit");
+if (lastVisit) {
+  document.getElementById("visitInfo").textContent = "Dernière visite : " + lastVisit;
+}
+
 
 function closeModal() {
   document.getElementById("emailSuccessModal").style.display = "none";
 }
+
+function exporterCycleXML() {
+  // 1️⃣ Données de l'utilisatrice
+  const utilisateur = {
+    nom: document.getElementById("userName").value || "Mamani",
+    age: parseInt(document.getElementById("userAge").value),
+    cycle: {
+      dateDebut: document.getElementById("startDate").value,
+      duree: parseInt(document.getElementById("cycleLength").value),
+      ovulation: calculerDate(document.getElementById("startDate").value, 14),
+      fertile: {
+        debut: calculerDate(document.getElementById("startDate").value, 12),
+        fin: calculerDate(document.getElementById("startDate").value, 16)
+      }
+    }
+  };
+
+  // 2️⃣ Générer le contenu XML
+  const xmlContent = `
+<utilisatrice>
+  <nom>${utilisateur.nom}</nom>
+  <age>${utilisateur.age}</age>
+  <cycle>
+    <dateDebut>${utilisateur.cycle.dateDebut}</dateDebut>
+    <duree>${utilisateur.cycle.duree}</duree>
+    <ovulation>${utilisateur.cycle.ovulation}</ovulation>
+    <fertile>
+      <debut>${utilisateur.cycle.fertile.debut}</debut>
+      <fin>${utilisateur.cycle.fertile.fin}</fin>
+    </fertile>
+  </cycle>
+</utilisatrice>
+`.trim();
+
+  // 3️⃣ Créer et télécharger le fichier XML
+  const blob = new Blob([xmlContent], { type: "application/xml" });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement("a");
+  a.href = url;
+  a.download = "cycle.xml";
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  URL.revokeObjectURL(url);
+}
+
+// 🔧 Fonction utilitaire pour calculer une date + décalage
+function calculerDate(dateStr, offset) {
+  const date = new Date(dateStr);
+  date.setDate(date.getDate() + offset);
+  return date.toISOString().split("T")[0]; // format YYYY-MM-DD
+}
+
+
 
 
 
