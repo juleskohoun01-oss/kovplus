@@ -290,14 +290,14 @@ function closeModal() {
 function exporterCycleXML() {
   // 1️⃣ Données de l'utilisatrice
 const utilisateur = {
-  age: parseInt(document.getElementById("labelAge").value),
+  age: parseInt(document.getElementById("userAge").value),
   cycle: {
-    dateDebut: document.getElementById("labelStart").value,
-    duree: parseInt(document.getElementById("labelCycle").value),
-    ovulation: calculerDate(document.getElementById("labelStart").value, 14),
+    dateDebut: document.getElementById("startDate").value,
+    duree: parseInt(document.getElementById("cycleLength").value),
+    ovulation: calculerDate(document.getElementById("startDate").value, 14),
     fertile: {
-      debut: calculerDate(document.getElementById("labelStart").value, 12),
-      fin: calculerDate(document.getElementById("labelStart").value, 16)
+      debut: calculerDate(document.getElementById("startDate").value, 12),
+      fin: calculerDate(document.getElementById("startDate").value, 16)
     }
   }
 };
@@ -336,6 +336,7 @@ function calculerDate(dateStr, offset) {
   date.setDate(date.getDate() + offset);
   return date.toISOString().split("T")[0]; // format YYYY-MM-DD
 }
+
 
 
 
