@@ -292,7 +292,7 @@ function exporterCycleXML() {
 const utilisateur = {
   age: parseInt(document.getElementById("userAge").value),
   cycle: {
-    dateDebut: startDateStr,
+    dateDebut: parseInt(document.getElementById("startDate").value),
     duree: parseInt(document.getElementById("cycleLength").value),
     ovulation: calculerDate(startDateStr, 14),
     fertile: {
@@ -336,6 +336,7 @@ function calculerDate(dateStr, offset) {
   date.setDate(date.getDate() + offset);
   return date.toISOString().split("T")[0]; // format YYYY-MM-DD
 }
+
 
 
 
