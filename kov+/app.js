@@ -294,10 +294,10 @@ const utilisateur = {
   cycle: {
     dateDebut: parseInt(document.getElementById("startDate").value),
     duree: parseInt(document.getElementById("cycleLength").value),
-    ovulation: calculerDate(startDateStr, 14),
+    ovulation: calculerDate(dateDebut, 14),
     fertile: {
-      debut: calculerDate(startDateStr, 12),
-      fin: calculerDate(startDateStr, 16)
+      debut: calculerDate(dateDebut, 12),
+      fin: calculerDate(dateDebut, 16)
     }
   }
 };
@@ -336,6 +336,7 @@ function calculerDate(dateStr, offset) {
   date.setDate(date.getDate() + offset);
   return date.toISOString().split("T")[0]; // format YYYY-MM-DD
 }
+
 
 
 
