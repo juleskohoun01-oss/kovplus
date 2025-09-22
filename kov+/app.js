@@ -122,8 +122,8 @@ function calculerCycle() {
   `;
 
   drawChart(jours, fertileStart, fertileEnd, ovulation);
-  openCarouselModal(); // à la fin de calculerCycle()
-  updateCycleImages(jours, ovulation, fertileStart, fertileEnd)
+  //openCarouselModal(); // à la fin de calculerCycle()
+  //updateCycleImages(jours, ovulation, fertileStart, fertileEnd)
     // ✅ Export automatique du fichier XML
   exporterCycleXML();
 
@@ -336,6 +336,7 @@ function calculerDate(dateStr, offset) {
   date.setDate(date.getDate() + offset);
   return date.toISOString().split("T")[0]; // format YYYY-MM-DD
 }
+
 
 
 
