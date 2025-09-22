@@ -289,24 +289,22 @@ function closeModal() {
 
 function exporterCycleXML() {
   // 1️⃣ Données de l'utilisatrice
-  const utilisateur = {
-    nom: document.getElementById("userName").value || "Mamani",
-    age: parseInt(document.getElementById("userAge").value),
-    cycle: {
-      dateDebut: document.getElementById("startDate").value,
-      duree: parseInt(document.getElementById("cycleLength").value),
-      ovulation: calculerDate(document.getElementById("startDate").value, 14),
-      fertile: {
-        debut: calculerDate(document.getElementById("startDate").value, 12),
-        fin: calculerDate(document.getElementById("startDate").value, 16)
-      }
+const utilisateur = {
+  age: parseInt(document.getElementById("userAge").value),
+  cycle: {
+    dateDebut: document.getElementById("startDate").value,
+    duree: parseInt(document.getElementById("cycleLength").value),
+    ovulation: calculerDate(document.getElementById("startDate").value, 14),
+    fertile: {
+      debut: calculerDate(document.getElementById("startDate").value, 12),
+      fin: calculerDate(document.getElementById("startDate").value, 16)
     }
-  };
+  }
+};
 
   // 2️⃣ Générer le contenu XML
-  const xmlContent = `
+const xmlContent = `
 <utilisatrice>
-  <nom>${utilisateur.nom}</nom>
   <age>${utilisateur.age}</age>
   <cycle>
     <dateDebut>${utilisateur.cycle.dateDebut}</dateDebut>
@@ -338,6 +336,7 @@ function calculerDate(dateStr, offset) {
   date.setDate(date.getDate() + offset);
   return date.toISOString().split("T")[0]; // format YYYY-MM-DD
 }
+
 
 
 
