@@ -1,0 +1,5 @@
+User-agent: *
+Disallow: /kovplus/private/
+Allow: /kovplus/
+
+Sitemap: https://juleskohoun01-oss.github.io/kovplus/sitemap.xml
