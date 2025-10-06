@@ -110,14 +110,14 @@ function calculerCycle() {
   const fertileEnd = jours[cycleLength - 11];
 
   let conseil = "";
-  if (age < 18) conseil = "Cycle souvent irrégulier à cet âge.";
+  if (age < 18) conseil = "Cycle souvent irrégulier à cet âge. Abstenez-vous entre le ${fertileStart} et le ${fertileEnd}";
   else if (age > 45) conseil = "Cycle potentiellement irrégulier en pré-ménopause.";
   else conseil = "Cycle régulier estimé.";
 
   resultDiv.innerHTML = `
     <p><strong>Cycle :</strong> du ${formatDate(jours[0])} au ${formatDate(jours[jours.length - 1])}</p>
     <p><strong>Ovulation estimée :</strong> ${formatDate(ovulation)}</p>
-    <p><strong>Période fertile :</strong> du ${formatDate(fertileStart)} au ${formatDate(fertileEnd)}</p>
+    <p><strong>Période fertile-Danger  :</strong> du ${formatDate(fertileStart)} au ${formatDate(fertileEnd)}</p>
     <p><strong>Conseil :</strong> ${conseil}</p>
   `;
 
@@ -336,6 +336,7 @@ function calculerDate(dateStr, offset) {
   date.setDate(date.getDate() + offset);
   return date.toISOString().split("T")[0]; // format YYYY-MM-DD
 }
+
 
 
 
